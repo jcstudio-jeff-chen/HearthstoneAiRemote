@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.24"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/goku"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/gl_top"
+        app:layout_constraintLeft_toRightOf="@id/gl_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_right"
+        app:layout_constraintBottom_toTopOf="@id/gl_bottom"
+        app:riv_oval="true"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/hs_empty_minion_card"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_name_top"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_name_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.61"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_name_left"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.17"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_name_right"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.89"/>
+
+    <com.jcstudio.hearthstoneairemote.MinionNameTextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="超級賽亞人 孫悟空"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/gl_name_top"
+        app:layout_constraintBottom_toTopOf="@id/gl_name_bottom"
+        app:layout_constraintLeft_toLeftOf="@id/gl_name_left"
+        app:layout_constraintRight_toRightOf="@id/gl_name_right"
+        android:textColor="@android:color/white"
+        android:shadowRadius="3"
+        app:relative_to="height"
+        app:ratio="0.4"
+        android:shadowColor="@android:color/black"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_flag_top"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_text_left"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_text_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_battlecry"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.77"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_card_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
+        android:id="@+id/tv_flag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:text="風怒、衝鋒、聖盾術、嘲諷、潛行、無法指定"
+        android:textColor="@android:color/black"
+        app:relative_to="width"
+        app:ratio="0.1"
+        app:layout_constraintTop_toBottomOf="@id/gl_flag_top"
+        app:layout_constraintLeft_toRightOf="@id/gl_text_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_text_right"
+        app:layout_constraintBottom_toTopOf="@id/gl_card_bottom"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_cost_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_cost_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_cost_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_cost_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.27"/>
+
+    <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
+        android:id="@+id/tv_cost"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:text="10"
+        android:includeFontPadding="false"
+        android:textStyle="bold"
+        app:ratio="0.9"
+        app:relative_to="height"
+        app:layout_constraintTop_toBottomOf="@id/gl_cost_top"
+        app:layout_constraintBottom_toTopOf="@id/gl_cost_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_cost_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_cost_right"
+        android:shadowColor="@android:color/black"
+        android:shadowRadius="5"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_atk_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_atk_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.97"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_atk_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_atk_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.28"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_hp_left"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_hp_right"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99"/>
+
+    <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
+        android:id="@+id/tv_atk"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:text="7"
+        android:includeFontPadding="false"
+        android:textStyle="bold"
+        app:ratio="1"
+        app:relative_to="height"
+        app:layout_constraintTop_toBottomOf="@id/gl_atk_top"
+        app:layout_constraintBottom_toTopOf="@id/gl_atk_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_atk_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_atk_right"
+        android:shadowColor="@android:color/black"
+        android:shadowRadius="5"/>
+
+    <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
+        android:id="@+id/tv_hp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:text="7"
+        android:includeFontPadding="false"
+        android:textStyle="bold"
+        app:ratio="1"
+        app:relative_to="height"
+        app:layout_constraintTop_toBottomOf="@id/gl_atk_top"
+        app:layout_constraintBottom_toTopOf="@id/gl_atk_bottom"
+        app:layout_constraintLeft_toRightOf="@id/gl_hp_left"
+        app:layout_constraintRight_toLeftOf="@id/gl_hp_right"
+        android:shadowColor="@android:color/black"
+        android:shadowRadius="5"/>
+
+</android.support.constraint.ConstraintLayout>

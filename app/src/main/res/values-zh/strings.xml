@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">爐石 AlphaGo</string>
+    <string name="taunt"><b>嘲諷</b></string>
+    <string name="windfury"><b>風怒</b></string>
+    <string name="divine_shield"><b>聖盾術</b></string>
+    <string name="separator">、</string>
+    <string name="charge"><b>衝鋒</b></string>
+    <string name="cant_be_target"><b>無法指定</b></string>
+    <string name="stealth"><b>潛行</b></string>
+    <string name="dot">。</string>
+    <string name="battlecry"><b>戰吼</b>：</string>
+    <string name="yogg_desc">隨機施放法術，數量等同你在本賽局中打出的法術總數 (隨機選擇目標)</string>
+    <string name="draw">抽</string>
+    <string name="cards">張牌</string>
+    <string name="gain">獲得</string>
+    <string name="mana">顆法力水晶</string>
+    <string name="this_turn">（限本回合）</string>
+    <string name="deal">造成</string>
+    <string name="damage">點傷害</string>
+    <string name="restore">治療</string>
+    <string name="health">點生命值</string>
+    <string name="deal_all_enemy_minion">對所有敵方手下造成</string>
+    <string name="damage_all_enemy_minion">點傷害</string>
+    <string name="deal_all_minion">對全部手下造成</string>
+    <string name="damage_all_minion">點傷害</string>
+    <string name="deal_all_character">對全部角色造成</string>
+    <string name="damage_all_character">點傷害</string>
+    <string name="deal_all_enemy">對所有敵人造成</string>
+    <string name="damage_all_enemy">點傷害</string>
+    <string name="deal_your_hero">對你的英雄造成</string>
+    <string name="damage_your_hero">點傷害</string>
+    <string name="damage_enemy_hero">點傷害</string>
+    <string name="deal_enemy_hero">對敵方英雄造成</string>
+    <string name="deal_both_hero">對雙方英雄造成</string>
+    <string name="damage_both_hero">點傷害</string>
+    <string name="armor">點護甲</string>
+</resources>

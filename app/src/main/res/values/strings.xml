@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Hearthstone AlphaGo</string>
+    <string name="taunt"><b>Taunt</b></string>
+    <string name="windfury"><b>Windfury</b></string>
+    <string name="divine_shield"><b>Divine Shield</b></string>
+    <string name="separator">\", \"</string>
+    <string name="charge"><b>Charge</b></string>
+    <string name="cant_be_target"><b>Can\'t be targeted</b></string>
+    <string name="stealth"><b>Stealth</b></string>
+    <string name="dot">". "</string>
+    <string name="battlecry"><b>Battlecry</b>": "</string>
+    <string name="yogg_desc">Cast a random spell for each spell you\'ve cast this game (targets chosen randomly).</string>
+    <string name="draw">Draw</string>
+    <string name="cards">cards</string>
+    <string name="gain">Gain</string>
+    <string name="mana">mana</string>
+    <string name="this_turn">(This turn only)</string>
+    <string name="deal">Deal</string>
+    <string name="damage">damage</string>
+    <string name="restore">Restore</string>
+    <string name="health">health</string>
+    <string name="deal_all_enemy_minion">Deal</string>
+    <string name="damage_all_enemy_minion">damage to all enemy minions</string>
+    <string name="deal_all_minion">Deal</string>
+    <string name="damage_all_minion">damage to all minions</string>
+    <string name="deal_all_character">Deal</string>
+    <string name="damage_all_character">damage to all character</string>
+    <string name="deal_all_enemy">Deal</string>
+    <string name="damage_all_enemy">damage to all enemy</string>
+    <string name="deal_your_hero">Deal</string>
+    <string name="damage_your_hero">damage to your hero</string>
+    <string name="damage_enemy_hero">damage to the enemy hero</string>
+    <string name="deal_enemy_hero">Deal</string>
+    <string name="deal_both_hero">Deal</string>
+    <string name="damage_both_hero">damage to both hero.</string>
+    <string name="armor">armor</string>
+</resources>
