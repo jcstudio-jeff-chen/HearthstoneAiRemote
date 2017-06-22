@@ -138,7 +138,7 @@
         android:id="@+id/tv_flag"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:text="風怒、衝鋒、聖盾術、嘲諷、潛行、無法指定"
         android:textColor="@android:color/black"
         app:relative_to="width"
@@ -199,14 +199,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84"/>
+        app:layout_constraintGuide_percent="0.83"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_atk_bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.97"/>
+        app:layout_constraintGuide_percent="0.98"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_atk_left"
@@ -242,10 +242,10 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:text="7"
+        android:text="10"
         android:includeFontPadding="false"
         android:textStyle="bold"
-        app:ratio="1"
+        app:ratio="0.9"
         app:relative_to="height"
         app:layout_constraintTop_toBottomOf="@id/gl_atk_top"
         app:layout_constraintBottom_toTopOf="@id/gl_atk_bottom"
@@ -263,7 +263,7 @@
         android:text="7"
         android:includeFontPadding="false"
         android:textStyle="bold"
-        app:ratio="1"
+        app:ratio="0.9"
         app:relative_to="height"
         app:layout_constraintTop_toBottomOf="@id/gl_atk_top"
         app:layout_constraintBottom_toTopOf="@id/gl_atk_bottom"

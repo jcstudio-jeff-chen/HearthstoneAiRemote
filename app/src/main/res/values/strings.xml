@@ -34,4 +34,18 @@
     <string name="deal_both_hero">Deal</string>
     <string name="damage_both_hero">damage to both hero.</string>
     <string name="armor">armor</string>
+    <string name="restore_your_hero">Restore</string>
+    <string name="health_to_your_hero">health to your hero</string>
+    <string name="restore_both_hero">Restore</string>
+    <string name="health_both_hero">health to both hero</string>
+    <string name="restore_enemy_hero">Restore</string>
+    <string name="health_enemy_hero">health to the enemy hero</string>
+    <string name="restore_own_minion">Restore</string>
+    <string name="health_own_minion">health to your minions</string>
+    <string name="restore_own_character">Restore</string>
+    <string name="health_own_character">health to all friendly characters</string>
+    <string name="restore_all_minion">Restore</string>
+    <string name="health_all_minion">health to all minions</string>
+    <string name="restore_all_character">Restore</string>
+    <string name="health_all_character">health to all character</string>
 </resources>

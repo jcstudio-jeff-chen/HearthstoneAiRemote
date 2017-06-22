@@ -18,7 +18,7 @@
     <string name="this_turn">（限本回合）</string>
     <string name="deal">造成</string>
     <string name="damage">點傷害</string>
-    <string name="restore">治療</string>
+    <string name="restore">恢復</string>
     <string name="health">點生命值</string>
     <string name="deal_all_enemy_minion">對所有敵方手下造成</string>
     <string name="damage_all_enemy_minion">點傷害</string>
@@ -35,4 +35,18 @@
     <string name="deal_both_hero">對雙方英雄造成</string>
     <string name="damage_both_hero">點傷害</string>
     <string name="armor">點護甲</string>
+    <string name="restore_your_hero">為你的英雄恢復</string>
+    <string name="health_to_your_hero">點生命值</string>
+    <string name="restore_both_hero">為雙方英雄恢復</string>
+    <string name="health_both_hero">點生命值</string>
+    <string name="restore_enemy_hero">為敵方英雄恢復</string>
+    <string name="health_enemy_hero">點生命值</string>
+    <string name="restore_own_minion">恢復友方手下</string>
+    <string name="health_own_minion">點生命值</string>
+    <string name="restore_own_character">恢復全部友方角色</string>
+    <string name="health_own_character">點生命值</string>
+    <string name="restore_all_minion">恢復全部手下</string>
+    <string name="health_all_minion">點生命值</string>
+    <string name="restore_all_character">恢復全部角色</string>
+    <string name="health_all_character">點生命值</string>
 </resources>

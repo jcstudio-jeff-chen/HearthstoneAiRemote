@@ -13,8 +13,8 @@ import android.widget.TextView;
  */
 
 public class Card {
-    String name;
-    int picRes;
+    String name = "Card";
+    int picRes = R.drawable.goku;
     boolean hasTaunt = false;
     boolean hasWindfury = false;
     boolean hasShield = false;
@@ -23,7 +23,7 @@ public class Card {
     boolean hasStealth = false;
     boolean isYogg = false;
     boolean isWeapon = false;
-    int cost;
+    int cost = 0;
     int atk = 0;
     int hp = 0;
     int drawCard = 0;
@@ -63,30 +63,35 @@ public class Card {
                     flagBuilder.append(context.getText(R.string.separator));
                 }
                 flagBuilder.append(context.getText(R.string.windfury));
+                hasFlag = true;
             }
             if(hasShield){
                 if(hasFlag){
                     flagBuilder.append(context.getText(R.string.separator));
                 }
                 flagBuilder.append(context.getText(R.string.divine_shield));
+                hasFlag = true;
             }
             if(isCharged){
                 if(hasFlag){
                     flagBuilder.append(context.getText(R.string.separator));
                 }
                 flagBuilder.append(context.getText(R.string.charge));
+                hasFlag = true;
             }
             if(cantBeTargeted){
                 if(hasFlag){
                     flagBuilder.append(context.getText(R.string.separator));
                 }
                 flagBuilder.append(context.getText(R.string.cant_be_target));
+                hasFlag = true;
             }
             if(hasStealth){
                 if(hasFlag){
                     flagBuilder.append(context.getText(R.string.separator));
                 }
                 flagBuilder.append(context.getText(R.string.stealth));
+                hasFlag = true;
             }
             if(hasFlag){
                 flagBuilder.append(context.getText(R.string.dot));
@@ -101,6 +106,7 @@ public class Card {
             if(drawCard > 0){
                 if(!hasBattlecry){
                     flagBuilder.append(context.getText(R.string.battlecry));
+                    hasBattlecry = true;
                 }
                 flagBuilder.append(context.getText(R.string.draw));
                 flagBuilder.append(" ");
@@ -112,6 +118,7 @@ public class Card {
             if(manaGain > 0){
                 if(!hasBattlecry){
                     flagBuilder.append(context.getText(R.string.battlecry));
+                    hasBattlecry = true;
                 }
                 flagBuilder.append(context.getText(R.string.gain));
                 flagBuilder.append(" ");
@@ -124,6 +131,7 @@ public class Card {
             if(damage > 0){
                 if(!hasBattlecry){
                     flagBuilder.append(context.getText(R.string.battlecry));
+                    hasBattlecry = true;
                 }
                 flagBuilder.append(context.getText(R.string.deal));
                 flagBuilder.append(" ");
@@ -134,6 +142,7 @@ public class Card {
             } else if(damage < 0){
                 if(!hasBattlecry){
                     flagBuilder.append(context.getText(R.string.battlecry));
+                    hasBattlecry = true;
                 }
                 flagBuilder.append(context.getText(R.string.restore));
                 flagBuilder.append(" ");
@@ -142,77 +151,177 @@ public class Card {
                 flagBuilder.append(context.getText(R.string.health));
                 flagBuilder.append(context.getText(R.string.dot));
             }
-            if(aoeEnemyMinion > 0 && aoeOwnMinion == 0 && damageEnemyHero == 0){
-                if(!hasBattlecry){
-                    flagBuilder.append(context.getText(R.string.battlecry));
+            if(aoeEnemyMinion > 0){
+                if(aoeOwnMinion == 0){
+                    if(damageEnemyHero == 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_all_enemy_minion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(aoeEnemyMinion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_all_enemy_minion));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    } else {
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_all_enemy));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(aoeEnemyMinion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_all_enemy));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    }
+                } else {
+                    if(damageEnemyHero == 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_all_minion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(aoeEnemyMinion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_all_minion));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    } else {
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_all_character));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(aoeEnemyMinion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_all_character));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    }
                 }
-                flagBuilder.append(context.getText(R.string.deal_all_enemy_minion));
-                flagBuilder.append(" ");
-                flagBuilder.append(String.valueOf(aoeEnemyMinion));
-                flagBuilder.append(" ");
-                flagBuilder.append(context.getText(R.string.damage_all_enemy_minion));
-                flagBuilder.append(context.getText(R.string.dot));
-            } else if(aoeEnemyMinion > 0 && damageEnemyHero == 0){
-                if(!hasBattlecry){
-                    flagBuilder.append(context.getText(R.string.battlecry));
+            } else if(aoeEnemyMinion == 0){
+                if(aoeOwnMinion < 0){
+                    if(damageOwnHero < 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.restore_own_character));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(-aoeOwnMinion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.health_own_character));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    } else {
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.restore_own_minion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(-aoeOwnMinion));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.health_own_minion));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    }
                 }
-                flagBuilder.append(context.getText(R.string.deal_all_minion));
-                flagBuilder.append(" ");
-                flagBuilder.append(String.valueOf(aoeEnemyMinion));
-                flagBuilder.append(" ");
-                flagBuilder.append(context.getText(R.string.damage_all_minion));
-                flagBuilder.append(context.getText(R.string.dot));
-            } else if(aoeEnemyMinion > 0 && aoeOwnMinion == 0){
-                if(!hasBattlecry){
-                    flagBuilder.append(context.getText(R.string.battlecry));
+                if(damageEnemyHero > 0){
+                    if(damageOwnHero > 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_both_hero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(damageEnemyHero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_both_hero));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    } else {
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_enemy_hero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(damageEnemyHero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_enemy_hero));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    }
+                } else if(damageEnemyHero == 0) {
+                    if(damageOwnHero > 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.deal_your_hero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(damageOwnHero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.damage_your_hero));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    } else if(damageOwnHero < 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.restore_your_hero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(-damageOwnHero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.health_to_your_hero));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    }
+                } else {
+                    if(damageOwnHero < 0){
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.restore_both_hero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(-damageEnemyHero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.health_both_hero));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    } else {
+                        if(!hasBattlecry){
+                            flagBuilder.append(context.getText(R.string.battlecry));
+                            hasBattlecry = true;
+                        }
+                        flagBuilder.append(context.getText(R.string.restore_enemy_hero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(String.valueOf(-damageEnemyHero));
+                        flagBuilder.append(" ");
+                        flagBuilder.append(context.getText(R.string.health_enemy_hero));
+                        flagBuilder.append(context.getText(R.string.dot));
+                    }
                 }
-                flagBuilder.append(context.getText(R.string.deal_all_enemy));
-                flagBuilder.append(" ");
-                flagBuilder.append(String.valueOf(aoeEnemyMinion));
-                flagBuilder.append(" ");
-                flagBuilder.append(context.getText(R.string.damage_all_enemy));
-                flagBuilder.append(context.getText(R.string.dot));
-            } else if(aoeEnemyMinion > 0){
-                if(!hasBattlecry){
-                    flagBuilder.append(context.getText(R.string.battlecry));
-                }
-                flagBuilder.append(context.getText(R.string.deal_all_character));
-                flagBuilder.append(" ");
-                flagBuilder.append(String.valueOf(aoeEnemyMinion));
-                flagBuilder.append(" ");
-                flagBuilder.append(context.getText(R.string.damage_all_character));
-                flagBuilder.append(context.getText(R.string.dot));
-            }
-            if(aoeEnemyMinion == 0){
-                if(damageEnemyHero > 0 && damageOwnHero > 0){
+            } else {
+                if(damageEnemyHero < 0){
                     if(!hasBattlecry){
                         flagBuilder.append(context.getText(R.string.battlecry));
+                        hasBattlecry = true;
                     }
-                    flagBuilder.append(context.getText(R.string.deal_both_hero));
+                    flagBuilder.append(context.getText(R.string.restore_all_character));
                     flagBuilder.append(" ");
-                    flagBuilder.append(String.valueOf(damageEnemyHero));
+                    flagBuilder.append(String.valueOf(-damageEnemyHero));
                     flagBuilder.append(" ");
-                    flagBuilder.append(context.getText(R.string.damage_both_hero));
+                    flagBuilder.append(context.getText(R.string.health_all_character));
                     flagBuilder.append(context.getText(R.string.dot));
-                } else if(damageEnemyHero > 0){
+                } else {
                     if(!hasBattlecry){
                         flagBuilder.append(context.getText(R.string.battlecry));
+                        hasBattlecry = true;
                     }
-                    flagBuilder.append(context.getText(R.string.deal_enemy_hero));
+                    flagBuilder.append(context.getText(R.string.restore_all_minion));
                     flagBuilder.append(" ");
-                    flagBuilder.append(String.valueOf(damageEnemyHero));
+                    flagBuilder.append(String.valueOf(-damageEnemyHero));
                     flagBuilder.append(" ");
-                    flagBuilder.append(context.getText(R.string.damage_enemy_hero));
-                    flagBuilder.append(context.getText(R.string.dot));
-                } else if(damageOwnHero > 0){
-                    if(!hasBattlecry){
-                        flagBuilder.append(context.getText(R.string.battlecry));
-                    }
-                    flagBuilder.append(context.getText(R.string.deal_your_hero));
-                    flagBuilder.append(" ");
-                    flagBuilder.append(String.valueOf(damageOwnHero));
-                    flagBuilder.append(" ");
-                    flagBuilder.append(context.getText(R.string.damage_your_hero));
+                    flagBuilder.append(context.getText(R.string.health_all_minion));
                     flagBuilder.append(context.getText(R.string.dot));
                 }
             }
