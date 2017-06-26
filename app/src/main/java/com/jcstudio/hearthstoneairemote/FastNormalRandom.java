@@ -9,7 +9,7 @@ public class FastNormalRandom {
     public static float get(float mean, float dev){
         float r = mean;
         for(int i = 0; i < 3; i++){
-            r += Math.random()*2*dev-1;
+            r += (Math.random()*2-1)*dev;
         }
         return r;
     }

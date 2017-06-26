@@ -132,7 +132,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.87"/>
 
     <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
         android:id="@+id/tv_flag"
@@ -167,14 +167,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05"/>
+        app:layout_constraintGuide_percent="0" />
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_cost_right"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.27"/>
+        app:layout_constraintGuide_percent="0.32"/>
 
     <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
         android:id="@+id/tv_cost"
@@ -213,28 +213,28 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.06"/>
+        app:layout_constraintGuide_percent="0.00"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_atk_right"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.28"/>
+        app:layout_constraintGuide_percent="0.34"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_hp_left"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8"/>
+        app:layout_constraintGuide_percent="0.74"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/gl_hp_right"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.99"/>
+        app:layout_constraintGuide_percent="1.05"/>
 
     <com.jcstudio.hearthstoneairemote.RelativeSizeTextView
         android:id="@+id/tv_atk"
@@ -245,7 +245,7 @@
         android:text="10"
         android:includeFontPadding="false"
         android:textStyle="bold"
-        app:ratio="0.9"
+        app:ratio="0.8"
         app:relative_to="height"
         app:layout_constraintTop_toBottomOf="@id/gl_atk_top"
         app:layout_constraintBottom_toTopOf="@id/gl_atk_bottom"
@@ -263,7 +263,7 @@
         android:text="7"
         android:includeFontPadding="false"
         android:textStyle="bold"
-        app:ratio="0.9"
+        app:ratio="0.8"
         app:relative_to="height"
         app:layout_constraintTop_toBottomOf="@id/gl_atk_top"
         app:layout_constraintBottom_toTopOf="@id/gl_atk_bottom"

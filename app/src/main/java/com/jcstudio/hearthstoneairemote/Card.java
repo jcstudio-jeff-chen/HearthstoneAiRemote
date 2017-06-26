@@ -34,6 +34,7 @@ public class Card {
     int damageEnemyHero = 0;
     int damageOwnHero = 0;
     int armorGain = 0;
+    int spellDamageIncrease = 0;
 
     public boolean isMinion(){
         return hp > 0 && !isWeapon;
@@ -91,6 +92,14 @@ public class Card {
                     flagBuilder.append(context.getText(R.string.separator));
                 }
                 flagBuilder.append(context.getText(R.string.stealth));
+                hasFlag = true;
+            }
+            if(spellDamageIncrease > 0){
+                if(hasFlag){
+                    flagBuilder.append(context.getText(R.string.separator));
+                }
+                flagBuilder.append(context.getText(R.string.spell_damage));
+                flagBuilder.append("<b> +").append(String.valueOf(spellDamageIncrease));
                 hasFlag = true;
             }
             if(hasFlag){
