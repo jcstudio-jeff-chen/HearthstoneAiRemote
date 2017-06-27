@@ -9,4 +9,9 @@ import java.util.ArrayList;
 public class Minion extends Card {
     int currentHp;
     int attackCount;
+
+    public Minion(){
+        currentHp = hp;
+        attackCount = 0;
+    }
 }

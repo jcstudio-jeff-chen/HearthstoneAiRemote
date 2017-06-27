@@ -9,14 +9,16 @@ import java.util.ArrayList;
 public class DeckBuilder {
     float[] costWeight = new float[11];
     ArrayList<Card> mustHave = new ArrayList<>();
-    float minionRate = 0.7f;
+    float minionRate = 0.6f;
+    float weaponRate = 0.1f;
     float bcRate = 0.6f;
-    float tauntRate = 0.25f;
+    float tauntRate = 0.15f;
     float shieldRate = 0.1f;
     float windfuryRate = 0.1f;
     float chargeRate = 0.1f;
     float cantTargetRate = 0.06f;
     float stealthRate = 0.06f;
+    float poisonousRate = 0.06f;
     float spDmgIncRate = 0.08f;
     float spDmgIncMax = 0.5f;
     float spDmgIncPow = 2;
@@ -70,7 +72,7 @@ public class DeckBuilder {
         return results;
     }
 
-    float bcDamageWeight = 10;
+    float bcDamageWeight = 6;
     float bcHealWeight = 3;
     float bcAoeEnemyMinionWeight = 2;
     float bcAoeAllEnemyWeight = 1;
@@ -170,13 +172,14 @@ public class DeckBuilder {
         for(int i = 0; i < 30; i++){
             Card c = new Card();
             boolean isMinion = Math.random() < minionRate;
+            boolean isWeapon = !isMinion && Math.random() < weaponRate / (1-minionRate);
             boolean hasBattlecry = Math.random() < bcRate;
             int cost = WeightedRandom.get(costWeight);
             c.cost = cost;
             int value = cost+1;
             int spellType = isMinion ? WeightedRandom.get(bcWeights) : WeightedRandom.get(spWeights);
             float spellValue = value;
-            if(isMinion){
+            if(isMinion || isWeapon){
                 float lb = 1;
                 float ub = value * bcMaxValue;
                 if(ub < lb){
@@ -192,6 +195,7 @@ public class DeckBuilder {
                 boolean isCharged = Math.random() < chargeRate;
                 boolean cantTarget = Math.random() < cantTargetRate;
                 boolean hasStealth = Math.random() < stealthRate;
+                boolean isPoisonous = Math.random() < poisonousRate;
                 boolean hasSpDmg = Math.random() < spDmgIncRate;
 
                 float minionValue = hasBattlecry ? (value - spellValue) : value;
@@ -206,7 +210,11 @@ public class DeckBuilder {
                 }
                 if((minionValue >= 1.5 || c.hasTaunt && minionValue >= 1) && cantTarget){
                     c.cantBeTargeted = true;
-                    minionValue -= 0.5;
+                    minionValue = minionValue*0.8f;
+                }
+                if((minionValue >= 2 || c.hasTaunt && minionValue >= 1) && isPoisonous){
+                    c.isPoisonous = true;
+                    minionValue-=1.5;
                 }
                 if(minionValue >= 2 && hasSpDmg){
                     float lb = 1;
@@ -253,18 +261,25 @@ public class DeckBuilder {
                         }
                     }
                 }
-                if(c.hp >= 3 && hasStealth){
+                if(c.hp >= 3 && hasStealth && !c.isCharged){
                     c.hp -= 2;
                     c.hasStealth = true;
                 }
+            } else if(isWeapon){
+                float weaponValue = hasBattlecry ? (value-spellValue) : value;
+
             }
-            if(!isMinion || hasBattlecry) {
+            if((!isMinion && !isWeapon) || hasBattlecry) {
                 switch (spellType) {
                     case 0:
                         c.damage = Math.round(spellValue);
                         break;
                     case 1:
-                        c.damage = Math.round(-spellValue * 2f);
+                        if(spellValue <= 3) {
+                            c.damage = Math.round(-spellValue * 2f);
+                        } else {
+                            c.damage = Math.round(spellValue);
+                        }
                         break;
                     case 2:
                         if (spellValue < 3 || ((spellValue - 1) / 2f - Math.round((spellValue - 1) / 2f)) > 0.2) {
@@ -303,11 +318,29 @@ public class DeckBuilder {
                         }
                         break;
                     case 6:
-                        c.aoeOwnMinion = Math.round(-spellValue * 2f);
+                        if(spellValue <= 3) {
+                            c.aoeOwnMinion = Math.round(-spellValue * 2f);
+                        } else {
+                            if (((spellValue - 1) / 2f - Math.round((spellValue - 1) / 2f)) > 0.2) {
+                                c.damage = Math.round(spellValue);
+                            } else {
+                                c.aoeEnemyMinion = Math.round((spellValue - 1) / 2f);
+                            }
+                        }
                         break;
                     case 7:
-                        c.aoeOwnMinion = Math.round(-spellValue * 1.5f);
-                        c.damageOwnHero = Math.round(-spellValue * 1.5f);
+                        if(spellValue <= 4) {
+                            c.aoeOwnMinion = Math.round(-spellValue * 1.5f);
+                            c.damageOwnHero = Math.round(-spellValue * 1.5f);
+                        } else {
+                            if (((spellValue - 1) / 2f - Math.round((spellValue - 1) / 2f)) > 0.2) {
+                                c.damage = Math.round(spellValue);
+                            } else {
+                                int damage = Math.round((spellValue - 1) / 2f);
+                                c.aoeEnemyMinion = damage;
+                                c.damageEnemyHero = damage;
+                            }
+                        }
                         break;
                     case 8:
                         if (spellValue <= 2) {
@@ -315,15 +348,33 @@ public class DeckBuilder {
                             c.aoeOwnMinion = heal;
                             c.aoeEnemyMinion = heal;
                         } else {
-                            c.aoeOwnMinion = Math.round(-spellValue * 2f);
+                            if (spellValue / 2f - Math.round(spellValue / 2f) > 0.2) {
+                                c.damage = Math.round(spellValue);
+                            } else {
+                                int damage = Math.round(spellValue / 2f);
+                                c.aoeEnemyMinion = damage;
+                                c.aoeOwnMinion = damage;
+                            }
                         }
                         break;
                     case 9:
-                        int heal = Math.round(-spellValue * 2f);
-                        c.aoeOwnMinion = heal;
-                        c.damageOwnHero = heal;
-                        c.aoeEnemyMinion = heal;
-                        c.damageEnemyHero = heal;
+                        if (spellValue <= 3) {
+                            int heal = Math.round(-spellValue * 2f);
+                            c.aoeOwnMinion = heal;
+                            c.damageOwnHero = heal;
+                            c.aoeEnemyMinion = heal;
+                            c.damageEnemyHero = heal;
+                        } else {
+                            if (spellValue / 2f - Math.round(spellValue / 2f) > 0.2) {
+                                c.damage = Math.round(spellValue);
+                            } else {
+                                int damage = Math.round(spellValue / 2f);
+                                c.aoeEnemyMinion = damage;
+                                c.aoeOwnMinion = damage;
+                                c.damageEnemyHero = damage;
+                                c.damageOwnHero = damage;
+                            }
+                        }
                         break;
                     case 10:
                         int damage = (int) Math.round(Math.sqrt(spellValue / 11.0) * 10);
@@ -352,7 +403,7 @@ public class DeckBuilder {
                         }
                         break;
                     case 13:
-                        heal = Math.round(spellValue * 2.5f);
+                        int heal = Math.round(spellValue * 2.5f);
                         c.damageEnemyHero = -heal;
                         break;
                     case 14:

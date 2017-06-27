@@ -50,4 +50,5 @@
     <string name="restore_all_character">恢復全部角色</string>
     <string name="health_all_character">點生命值</string>
     <string name="spell_damage"><b>法術傷害</b></string>
+    <string name="poisonous"><b>致命劇毒</b></string>
 </resources>
